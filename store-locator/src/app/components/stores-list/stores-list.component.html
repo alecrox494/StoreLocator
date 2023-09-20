@@ -1,4 +1,83 @@
 <p>stores-list</p>
-<ul *ngFor="let store of storeList">
-    <li>{{store | json}}</li>
+
+
+<!-- <mat-selection-list #stores [multiple]="false">
+  <mat-list-option *ngFor="let store of storeList" [value]="store.address">
+    {{store.ID}} {{store.address}}
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Option selected: {{stores.selectedOptions.hasValue() ? stores.selectedOptions.selected[0].value : 'None'}}
+</p> -->
+
+<table mat-table [dataSource]="storeList" class="mat-elevation-z8 store-table">
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{element.ID}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef>address</th>
+    <td mat-cell *matCellDef="let element">{{element.address}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="bookable">
+    <th mat-header-cell *matHeaderCellDef>bookable</th>
+    <td mat-cell *matCellDef="let element">{{element.bookable}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="countryIso">
+    <th mat-header-cell *matHeaderCellDef>countryIso</th>
+    <td mat-cell *matCellDef="let element">{{element.countryIso}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>email</th>
+    <td mat-cell *matCellDef="let element">{{element.email}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="hasPickupInStore">
+    <th mat-header-cell *matHeaderCellDef>hasPickupInStore</th>
+    <td mat-cell *matCellDef="let element">{{element.hasPickupInStore}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="hasTailorBooking">
+    <th mat-header-cell *matHeaderCellDef>hasTailorBooking</th>
+    <td mat-cell *matCellDef="let element">{{element.hasTailorBooking}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lat">
+    <th mat-header-cell *matHeaderCellDef>lat</th>
+    <td mat-cell *matCellDef="let element">{{element.lat}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lng">
+    <th mat-header-cell *matHeaderCellDef>lng</th>
+    <td mat-cell *matCellDef="let element">{{element.lng}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.store-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+</table>
+
+<div>
+  <h3>
+    Click Log
+  </h3>
+</div>
+
+<div *ngIf="!clickedRows.size">
+  Clicked rows will be logged here
+</div>
+
+<ul>
+  <li *ngFor="let clickedRow of clickedRows">
+    Clicked on {{clickedRow.ID}} - {{clickedRow.address}}
+  </li>
 </ul>

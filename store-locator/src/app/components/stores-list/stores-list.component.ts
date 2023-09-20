@@ -8,8 +8,9 @@ import { StoresDataService } from 'src/app/services/stores-data.service';
   styleUrls: ['./stores-list.component.scss']
 })
 export class StoresListComponent implements OnInit {
-
+  displayedColumns: string[] = ['ID', 'address', 'bookable', 'countryIso', 'email', 'hasPickupInStore', 'hasTailorBooking', 'lat', 'lng'];
   storeList: Array<Store> = [];
+  clickedRows = new Set<Store>();
 
   constructor(private storeService: StoresDataService) { }
 
@@ -18,3 +19,4 @@ export class StoresListComponent implements OnInit {
   }
 
 }
+

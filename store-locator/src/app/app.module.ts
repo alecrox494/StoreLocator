@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { StoresListComponent } from './components/stores-list/stores-list.component';
 import { StoreDetailsComponent } from './components/store-details/store-details.component';
 
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { StoreDetailsComponent } from './components/store-details/store-details.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
