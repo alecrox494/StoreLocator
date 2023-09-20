@@ -1,16 +1,5 @@
 <p>stores-list</p>
 
-
-<!-- <mat-selection-list #stores [multiple]="false">
-  <mat-list-option *ngFor="let store of storeList" [value]="store.address">
-    {{store.ID}} {{store.address}}
-  </mat-list-option>
-</mat-selection-list>
-
-<p>
-  Option selected: {{stores.selectedOptions.hasValue() ? stores.selectedOptions.selected[0].value : 'None'}}
-</p> -->
-
 <table mat-table [dataSource]="storeList" class="mat-elevation-z8 store-table">
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -60,24 +49,13 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr
       mat-row
-      (click)="clickedRows.add(row)"
-      [class.store-row-is-clicked]="clickedRows.has(row)"
+      (click)="clickRow(row, $event)"
       *matRowDef="let row; columns: displayedColumns;"
   ></tr>
+
 </table>
 
-<div>
-  <h3>
-    Click Log
-  </h3>
-</div>
 
-<div *ngIf="!clickedRows.size">
-  Clicked rows will be logged here
+<div class="detail-container" *ngIf="storeClicked">
+  <app-store-details [storeIDs]="storeIDs"></app-store-details>
 </div>
-
-<ul>
-  <li *ngFor="let clickedRow of clickedRows">
-    Clicked on {{clickedRow.ID}} - {{clickedRow.address}}
-  </li>
-</ul>
