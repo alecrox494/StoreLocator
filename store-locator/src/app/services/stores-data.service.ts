@@ -24,7 +24,7 @@ export class StoresDataService {
       bookable: false,
       countryIso: "GB",
       email: "dunhill.jermyn@dunhill.com",
-      hasPickupInStore: false,
+      hasPickupInStore: true,
       hasTailorBooking: false,
       lat: "51.5079550",
       lng: "-0.1384730"
@@ -36,7 +36,7 @@ export class StoresDataService {
       countryIso: "GB",
       email: "retail.bicester@dunhill.com",
       hasPickupInStore: false,
-      hasTailorBooking: false,
+      hasTailorBooking: true,
       lat: "51.8923165",
       lng: "-1.1546622"
     }

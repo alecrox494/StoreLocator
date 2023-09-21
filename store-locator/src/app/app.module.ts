@@ -10,6 +10,7 @@ import { StoreDetailsComponent } from './components/store-details/store-details.
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,8 @@ import {MatListModule} from '@angular/material/list';
     AppRoutingModule,
     MatTableModule,
     MatTabsModule,
-    MatListModule
-
+    MatListModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

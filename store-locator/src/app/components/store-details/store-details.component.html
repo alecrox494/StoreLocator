@@ -1,19 +1,28 @@
 <h3>Store Details</h3>
-
-
-
+<hr>
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
   <mat-tab label="Details">
 
     <mat-list>
-      <mat-list-item><span class="attrTitle">address -</span> {{store.address}}</mat-list-item>
-      <mat-list-item><span class="attrTitle">bookable -</span> {{store.bookable}}</mat-list-item>
-      <mat-list-item><span class="attrTitle">countryIso -</span> {{store.countryIso}}</mat-list-item>
-      <mat-list-item><span class="attrTitle">email -</span> {{store.email}}</mat-list-item>
-      <mat-list-item><span class="attrTitle">hasPickupInStore -</span> {{store.hasPickupInStore}}</mat-list-item>
-      <mat-list-item><span class="attrTitle">hasTailorBooking -</span> {{store.hasTailorBooking}}</mat-list-item>
-      <mat-list-item><span class="attrTitle">Coords -</span> lat:{{store.lat}} lng:{{store.lng}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">address -</span>{{store.address}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">bookable -</span>{{store.bookable}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">countryIso -</span>{{store.countryIso}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">email -</span>{{store.email}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">hasPickupInStore -</span>
+        <span *ngIf="store.hasPickupInStore; then isTrue else isFalse"></span>
+      </mat-list-item>
+      <mat-list-item><span class="attrTitle">hasTailorBooking -</span>
+        <span *ngIf="store.hasTailorBooking; then isTrue else isFalse"></span>
+      </mat-list-item>
+      <mat-list-item>
+        <span class="attrTitle">Coords -</span>
+        <span class="attrSubTitle">lat</span>{{store.lat}}
+        <span class="attrSubTitle">lat</span>{{store.lng}}
+      </mat-list-item>
     </mat-list>
+
+        <ng-template #isTrue><fa-icon class="green" [icon]="faCircleCheck"></fa-icon></ng-template>
+        <ng-template #isFalse><fa-icon class="red" [icon]="faCircleXmark"></fa-icon></ng-template>
 
   </mat-tab>
   <mat-tab label="Map">The MAPS</mat-tab>

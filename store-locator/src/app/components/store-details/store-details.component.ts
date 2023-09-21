@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from 'src/app/interfaces/store.interface';
 import { StoresDataService } from 'src/app/services/stores-data.service';
+import { faCircleCheck, faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-store-details',
@@ -11,6 +12,9 @@ import { StoresDataService } from 'src/app/services/stores-data.service';
 export class StoreDetailsComponent implements OnInit {
   @Input() storeIDs!: Observable<number>;
   store: Store = {} as Store;
+  // Font Awesome icons
+  faCircleCheck = faCircleCheck;
+  faCircleXmark = faCircleXmark;
 
   constructor(private storeService: StoresDataService) { }
 
