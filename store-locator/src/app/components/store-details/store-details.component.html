@@ -1,2 +1,21 @@
-<p>Store Details</p>
-{{store | json}}
+<h3>Store Details</h3>
+
+
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="Details">
+
+    <mat-list>
+      <mat-list-item><span class="attrTitle">address -</span> {{store.address}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">bookable -</span> {{store.bookable}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">countryIso -</span> {{store.countryIso}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">email -</span> {{store.email}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">hasPickupInStore -</span> {{store.hasPickupInStore}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">hasTailorBooking -</span> {{store.hasTailorBooking}}</mat-list-item>
+      <mat-list-item><span class="attrTitle">Coords -</span> lat:{{store.lat}} lng:{{store.lng}}</mat-list-item>
+    </mat-list>
+
+  </mat-tab>
+  <mat-tab label="Map">The MAPS</mat-tab>
+  <mat-tab label="ContactUs">ContactForm</mat-tab>
+</mat-tab-group>
