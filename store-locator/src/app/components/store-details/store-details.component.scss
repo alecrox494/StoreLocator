@@ -12,3 +12,12 @@
   text-decoration: underline;
   margin-right: 5px;
 }
+
+
+:host ::ng-deep {
+  .mat-mdc-tab-body,
+  .mat-mdc-tab-labels {
+    background-color: #7e7f7f;
+  }
+}
+
