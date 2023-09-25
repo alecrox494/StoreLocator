@@ -11,12 +11,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StoreMapComponent } from './components/store-map/store-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoresListComponent,
-    StoreDetailsComponent
+    StoreDetailsComponent,
+    StoreMapComponent
   ],
   imports: [
     BrowserModule,
