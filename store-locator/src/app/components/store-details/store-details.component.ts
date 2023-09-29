@@ -1,3 +1,4 @@
+import { GoogleMapService } from './../../services/google-map.service';
 import { MapCoords } from './../../interfaces/map.interface';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
