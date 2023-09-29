@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, AfterViewInit } from '@angular/core';
 import { MapCoords } from 'src/app/interfaces/map.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-store-map',
@@ -7,36 +8,42 @@ import { MapCoords } from 'src/app/interfaces/map.interface';
   styleUrls: ['./store-map.component.scss']
 })
 export class StoreMapComponent implements AfterViewInit {
-  @Input() latitude!: number;
-  @Input() longitude!: number;
-  @Input() coordsList!: MapCoords[];
+  @Input() coordsList!: Observable<Array<MapCoords>>;
 
   constructor(private elementRef: ElementRef) { }
 
 
   ngAfterViewInit(): void {
-    this.initMap();
+    this.coordsList.subscribe((coords) => {
+      const mapID = Math.random().toString(6)
+      this.initMap(coords, mapID);
+    });
   }
 
   // trasformarlo in un servizio al quale passi i parametri e le impostazioni grafiche
-  async initMap(): Promise<void> {
-    // The location of Uluru
-    const position = { lat: -25.344, lng: 131.031 };
-
-    // Request needed libraries.
-
+  async initMap( coords: MapCoords[], mapID: string): Promise<void> {
     // @ts-ignore
-    const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary,
+    const { Map} = await google.maps.importLibrary("maps") as google.maps.MapsLibrary,
     // @ts-ignore
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
+    // @ts-ignore
+    let position: LatLng | google.maps.LatLngLiteral | null | undefined;
+
+    // Prepare coordinates
+    if (coords.length > 1) {
+      //multicoords
+    } else {
+      // single coords
+      position = coords[0];
+    }
 
     // The map, centered at Uluru
     const map = new Map(
       this.elementRef.nativeElement.querySelector('#map') as HTMLElement,
       {
-        zoom: 4,
+        zoom: 10,
         center: position,
-        mapId: 'DEMO_MAP_ID',
+        mapId: mapID,
       }
     );
 

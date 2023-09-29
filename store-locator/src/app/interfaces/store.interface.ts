@@ -6,6 +6,6 @@ export interface Store {
   email: string;
   hasPickupInStore: boolean;
   hasTailorBooking: boolean;
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
 }
