@@ -10,7 +10,8 @@ export class GoogleMapService {
 
   constructor() { }
 
-  // trasformarlo in un servizio al quale passi i parametri e le impostazioni grafiche
+  //https://stackoverflow.com/questions/10268033/google-maps-api-v3-method-fitbounds
+
   async initMap( coords: MapCoords[], mapElement:HTMLElement, opts?: AppMapOptions | undefined ): Promise<void> {
     // @ts-ignore
     const { Map} = await google.maps.importLibrary("maps") as google.maps.MapsLibrary,
@@ -19,8 +20,10 @@ export class GoogleMapService {
     // @ts-ignore
     let position: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined;
 
+    const isMultiCoords: boolean = coords.length > 1;
+
     // Prepare coordinates
-    if (coords.length > 1) {
+    if (isMultiCoords) {
       //multicoords
     } else {
       // single coords

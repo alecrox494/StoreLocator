@@ -1,3 +1,4 @@
+import { MapCoords } from './../../interfaces/map.interface';
 import { Component, OnInit, ElementRef} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Store } from 'src/app/interfaces/store.interface';
@@ -13,12 +14,14 @@ export class StoresListComponent implements OnInit {
   storeList: Array<Store> = [];
   clickedRows = new Set<Store>();
   storeIDs:BehaviorSubject <number> = new BehaviorSubject<number>(0);
+  storeCoordsList:BehaviorSubject <Array<MapCoords>> = new BehaviorSubject<Array<MapCoords>> ([]);
   storeClicked: boolean = false;
 
   constructor(private storeService: StoresDataService, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     this.storeList = this.storeService.getStoresList();
+    this.storeCoordsList.next(this.storeService.getStoresCoords());
     this.storeIDs.subscribe((id) => {
       console.log(id);
     });

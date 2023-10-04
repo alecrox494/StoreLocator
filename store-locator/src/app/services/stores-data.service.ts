@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../interfaces/store.interface';
+import { MapCoords } from '../interfaces/map.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -52,4 +53,12 @@ export class StoresDataService {
     return this.storesList.find(store => store.ID === id);
   }
 
+  getStoresCoords(): Array<MapCoords> {
+    return this.storesList.map(store => {
+      return {
+        lat: store.lat,
+        lng: store.lng
+      }
+    });
+  }
 }

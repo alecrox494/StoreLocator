@@ -10,16 +10,16 @@ import { GoogleMapService } from 'src/app/services/google-map.service';
 })
 export class StoreMapComponent implements AfterViewInit {
   @Input() coordsList!: Observable<Array<MapCoords>>;
+  @Input() zoom!: number;
 
   constructor(private elementRef: ElementRef, private mapService: GoogleMapService) { }
-
 
   ngAfterViewInit(): void {
     this.coordsList.subscribe((coords) => {
       this.mapService.initMap(
         coords,
         this.elementRef.nativeElement.querySelector('#map') as HTMLElement,
-        {zoom: 6});
+        {zoom: this.zoom ? this.zoom : 6});
     });
   }
 }

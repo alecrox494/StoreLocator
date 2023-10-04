@@ -55,6 +55,10 @@
 
 </table>
 
+<div class="map-multi-markers" >
+  <app-store-map [coordsList]="storeCoordsList" [zoom]="5"></app-store-map>
+</div>
+
 
 <div class="detail-container" *ngIf="storeClicked">
   <app-store-details [storeIDs]="storeIDs"></app-store-details>
