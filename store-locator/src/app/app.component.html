@@ -1,8 +1,19 @@
 
-<div class="menu">
-  <ul>
-    <li><a routerLink="">Home</a></li>
-    <li><a routerLink="stores">StoreLocator</a></li>
-  </ul>
+<div class="container menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <fa-icon class="green" [icon]="faBarChart"></fa-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="">
+      <fa-icon class="green" [icon]="faFolderBlank"></fa-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item routerLink="stores">
+      <fa-icon class="green" [icon]="faMap"></fa-icon>
+      <span>Store Locator</span>
+    </button>
+  </mat-menu>
 </div>
+
+
 <router-outlet></router-outlet>
