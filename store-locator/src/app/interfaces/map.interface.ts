@@ -8,6 +8,7 @@ export interface AppMapOptions {
   mapID?: string;
 }
 
+//new interface to pass also place name (utils for marker) - not used yet
 export interface MapMarkerData {
   placeName: string;
   coords: MapCoords;

@@ -1,7 +1,7 @@
 <h3 class="component-title">Store Details</h3>
 
 <table mat-table [dataSource]="storeList" class="mat-elevation-z8 store-table">
-  <ng-container matColumnDef="ID">
+  <ng-container matColumnDef="ID" matColumnDef="">
     <th mat-header-cell *matHeaderCellDef>ID</th>
     <td mat-cell *matCellDef="let element">{{element.ID}}</td>
   </ng-container>
@@ -51,15 +51,16 @@
       mat-row
       (click)="clickRow(row, $event)"
       *matRowDef="let row; columns: displayedColumns;"
+      [attr.data-store-id]="row.ID"
   ></tr>
 
 </table>
 
-<div class="map-multi-markers" >
+<div class="map-multi-markers">
   <app-store-map [coordsList]="storeCoordsList" [zoom]="5"></app-store-map>
 </div>
 
 
-<div class="detail-container" *ngIf="storeClicked">
+<div class="detail-container" *ngIf="storeClicked || storeFromRoute">
   <app-store-details [storeIDs]="storeIDs"></app-store-details>
 </div>

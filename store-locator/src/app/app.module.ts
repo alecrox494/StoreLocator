@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppComponent,
     StoresListComponent,
     StoreDetailsComponent,
-    StoreMapComponent
+    StoreMapComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
