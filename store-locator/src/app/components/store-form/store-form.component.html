@@ -1,0 +1,29 @@
+<h2>Contact the store</h2>
+
+<form #storeForm="ngForm" (submit)="onSubmit(storeForm)">
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input matInput type="text" name="name" ngModel required>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Email</mat-label>
+  <input matInput type="email" name="email" ngModel required email>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Tel</mat-label>
+  <input matInput type="tel" name="tel" ngModel required>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Why are you contact the store?</mat-label>
+  <mat-select name="whyContact" ngModel>
+    <mat-option value="information">General Information</mat-option>
+    <mat-option value="reservation">Reservation</mat-option>
+    <mat-option value="products">Products</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Textarea</mat-label>
+  <textarea matInput name="message" ngModel></textarea>
+</mat-form-field>
+<button mat-flat-button color="primary" type="submit" [disabled]="!storeForm.valid">Submit</button>
+</form>
