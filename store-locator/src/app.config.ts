@@ -1,7 +1,8 @@
+import { AppConfigSecret } from "./app.config.secret";
+
 export class AppConfig {
-  //this file is a copy of app.config.secret.ts without data
-  //to use it you have to searching for the import path "./app.config.secret" and replace it with "./app.config"
-  private static GMAP_APY_KEY: string  = ''; //the old key was disabled and removed from Google's cloud console
+  //this file is a copy of app.config.secret.ts without data, the confidencial datas is stored in app.config.secret.ts
+  private static GMAP_APY_KEY: string  = AppConfigSecret.getGMapApiKey();
   private static GMAP_STYLE = [
     { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
     { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -22,6 +23,7 @@ export class AppConfig {
     { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#515c6d" }]},
     { featureType: "water", elementType: "labels.text.stroke", stylers: [{ color: "#17263c" }]},
   ];
+  private static BK_ENDPOINT: string = 'http://localhost/store-locator/wp-json/storelocator/v1';
 
   public static getGMapApiKey(): string {
     return this.GMAP_APY_KEY;
@@ -29,5 +31,9 @@ export class AppConfig {
 
   public static getGMapStyle(): Array<any> {
     return this.GMAP_STYLE;
+  }
+
+  public static getBkEndpoint(): string {
+    return this.BK_ENDPOINT;
   }
 }

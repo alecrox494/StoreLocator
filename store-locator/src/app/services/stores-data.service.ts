@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../interfaces/store.interface';
 import { MapCoords } from '../interfaces/map.interface';
+import { HttpClient } from '@angular/common/http';
+import { AppConfig } from '../../app.config';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,10 +46,31 @@ export class StoresDataService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getStoresList(): Array<Store> {
     return this.storesList;
+  }
+
+  getObservableStoresList(): Observable<Array<Store>> {
+    const endpoint = `${AppConfig.getBkEndpoint()}/stores/`;
+    const obsStoreList: Observable<Array<Store>> = this.http.get<Array<Store>>(endpoint).pipe(
+      map((stores) => {
+        stores.forEach(store => {
+          store.ID = parseInt(store.ID as unknown as string);
+          store.bookable = store.bookable as unknown as string === '1' ? true : false;
+          store.hasPickupInStore = store.hasPickupInStore as unknown as string === '1' ? true : false;
+          store.hasTailorBooking = store.hasTailorBooking as unknown as string === '1' ? true : false;
+          store.lat = parseFloat(store.lat as unknown as string);
+          store.lng = parseFloat(store.lng as unknown as string);
+        });
+        return stores;
+      })
+    )
+
+    obsStoreList.subscribe(stores => this.storesList = stores);
+
+    return obsStoreList
   }
 
   getStoreById(id: number): Store | undefined {

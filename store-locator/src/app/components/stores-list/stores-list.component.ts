@@ -23,15 +23,16 @@ export class StoresListComponent implements OnInit, AfterViewInit {
   constructor(private storeService: StoresDataService, private elementRef: ElementRef, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.storeList = this.storeService.getStoresList();
-    this.storeCoordsList.next(this.storeService.getStoresCoords());
-    this.hasLinksIdParam = this.route.snapshot.paramMap.has('id');
-    if(this.hasLinksIdParam)
-    {
-      this.activeStoreID = Number(this.route.snapshot.paramMap.get('id'));
-      this.singleStoreActive = true;
-      this.storeIDs.next(this.activeStoreID as number);
-    }
+    this.storeService.getObservableStoresList().subscribe((stores) => {
+      this.storeList = stores;
+      this.storeCoordsList.next(this.storeService.getStoresCoords());
+      this.hasLinksIdParam = this.route.snapshot.paramMap.has('id');
+      if(this.hasLinksIdParam) {
+        this.activeStoreID = Number(this.route.snapshot.paramMap.get('id'));
+        this.singleStoreActive = true;
+        this.storeIDs.next(this.activeStoreID as number);
+      }
+    });
   }
 
   ngAfterViewInit(): void {
