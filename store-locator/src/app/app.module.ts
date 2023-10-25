@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 //Components
@@ -12,9 +12,11 @@ import { StoresListComponent } from './components/stores-list/stores-list.compon
 import { StoreDetailsComponent } from './components/store-details/store-details.component';
 import { StoreMapComponent } from './components/store-map/store-map.component';
 import { StoreFormComponent } from './components/store-form/store-form.component';
+import { StoreAddComponent } from './components/store-add/store-add.component';
 
 //Pages
 import { HomeComponent } from './pages/home/home.component';
+import { ManageStoresComponent } from './pages/manage-stores/manage-stores.component';
 
 //Material - Icons
 import {MatTableModule} from '@angular/material/table';
@@ -24,8 +26,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio'
 import {MatButtonModule} from '@angular/material/button';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 
 
 @NgModule({
@@ -35,13 +39,16 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     StoreDetailsComponent,
     StoreMapComponent,
     HomeComponent,
-    StoreFormComponent
+    StoreFormComponent,
+    ManageStoresComponent,
+    StoreAddComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatMenuModule,
     MatTableModule,
@@ -51,7 +58,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

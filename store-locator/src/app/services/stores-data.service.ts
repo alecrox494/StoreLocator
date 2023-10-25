@@ -85,4 +85,8 @@ export class StoresDataService {
       }
     });
   }
+
+  addStoreData(store: Store):void {
+    //db call
+  }
 }

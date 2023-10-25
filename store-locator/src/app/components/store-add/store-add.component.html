@@ -1,0 +1,42 @@
+<form [formGroup]="storeDataFormToAdd" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>address</mat-label>
+    <input matInput type="text" name="address" formControlName="address"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>countryIso</mat-label>
+    <input matInput type="text" name="countryIso" maxlength="2" formControlName="countryIso"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>email</mat-label>
+    <input matInput type="email" name="email"  formControlName="email"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>latitude</mat-label>
+    <input matInput type="number" name="latitude"  formControlName="lat"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>longitude</mat-label>
+    <input matInput type="number" name="longitude"  formControlName="lng"/>
+  </mat-form-field>
+
+  <label>hasPickupInStore: </label>
+  <mat-radio-group formControlName="hasPickupInStore">
+    <mat-radio-button value="true">yes</mat-radio-button>
+    <mat-radio-button value="false">no</mat-radio-button>
+  </mat-radio-group>
+
+  <label>hasTailorBooking: </label>
+  <mat-radio-group formControlName="hasTailorBooking">
+    <mat-radio-button value="true">yes</mat-radio-button>
+    <mat-radio-button value="false">no</mat-radio-button>
+  </mat-radio-group>
+
+  <label>isBookable: </label>
+  <mat-radio-group formControlName="bookable">
+    <mat-radio-button value="true">yes</mat-radio-button>
+    <mat-radio-button value="false">no</mat-radio-button>
+  </mat-radio-group>
+
+  <button mat-flat-button color="primary" type="submit" [disabled]="!storeDataFormToAdd.valid">Submit</button>
+</form>

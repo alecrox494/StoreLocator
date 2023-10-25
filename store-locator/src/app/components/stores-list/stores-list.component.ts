@@ -44,7 +44,7 @@ export class StoresListComponent implements OnInit, AfterViewInit {
     const container = target.parentElement as HTMLTableRowElement;
     this.setActiveRow(container);
     const storeData = row;
-    this.storeIDs.next(storeData.ID);
+    this.storeIDs.next(storeData.ID as number);
     this.singleStoreActive = true;
     let storeRoute: string;
     if(this.hasLinksIdParam) {

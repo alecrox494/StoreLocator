@@ -1,5 +1,5 @@
 export interface Store {
-  ID: number;
+  ID?: number;
   address: string;
   bookable: boolean;
   countryIso: string;
